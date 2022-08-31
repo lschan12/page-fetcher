@@ -14,21 +14,25 @@ request(url, (error, response, body) => {
       if (answer === "n") {
         process.exit();
       } else if (answer === "y") {
-        fs.promises.writeFile(localPath, body, "utf8").then(() => {
+        fs.promises.writeFile(localPath, body, "utf8")
+        .then(() => {
           stats = fs.statSync(localPath)
           console.log(`Downloaded ${stats.size} bytes to ${localPath}`)
           process.exit();
-        }).catch(err => {
+        })
+        .catch(err => {
           console.log(err);
           process.exit();
         })
       }});
   } else {
-    fs.promises.writeFile(localPath, body, "utf8").then(() => {
+    fs.promises.writeFile(localPath, body, "utf8")
+    .then(() => {
       stats = fs.statSync(localPath)
       console.log(`Downloaded ${stats.size} bytes to ${localPath}`)
       process.exit();
-    }).catch(err => {
+    })
+    .catch(err => {
       console.log(err);
       process.exit();
     })
